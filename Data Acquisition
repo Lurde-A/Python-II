@@ -1,1 +1,69 @@
-Data Acquisition
+              Data Acquisition (https://api.census.gov/data/2020/acs/acs5/groups/B08303.html)
+                                  MAKING API REQUEST FROM BROWSER
+
+  1. Using the browser in another tab on your web browser, make an API call to request state-level data containing:
+      - The NAME variable,
+      - The total number of commuters, and
+      - The count for commuters who travel less than 5 minutes.
+//
+https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_002E&for=state
+
+  2. This time, make an API call to request state-level data containing:
+      - The NAME variable,
+      - The total commuters count, and
+      - The count for commuters who travel 90 or more minutes.
+//
+https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_013E&for=state
+
+                                  CENSUS GEOGRAPHIC LEVELS
+
+  3. Using the browser, make an API call to request state-level data containing the `NAME` variable, the total commuters count, and the count for commuters who travel 
+90 or more minutes for only the state of New York. (Click to Toggle Correct Answers).
+//
+https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_013E&for=state:36
+
+  4. Make an API call to request the same 3 variables for all counties within the state of New York. Use the for parameter in conjunction with in to request specific geographic regions.
+//
+https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_013E&for=county:*&in=state:36
+
+                                  MAKING API REQUEST IN API
+
+  5. Start by importing the requests module.
+//
+import requests
+
+  6. Make a GET request to the Census API to request county-level data containing
+      - the NAME variable,
+      - the total commuters count, and
+      - the count for commuters who travel 90 or more minutes
+      - for all counties
+      - within the state of New York.
+      - (see the previous exercise for this URL)
+Store the response object in a variable called r.
+//
+import requests
+r = requests.get('https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_013E&for=county:*&in=state:36')
+
+  7. Use the .text attribute to access the returned string data and store it in a variable called r_text. Try printing r_text with the print(___) command.
+//
+r_text=r.text
+print(r.text)
+
+  8. Use the .json() method to access the decoded JSON data and store it in a variable called r_json. Try printing out r_json. Can you see the advantage working with r_json has 
+over r_text?
+//
+r_json=r.json()
+print(r_json)
+
+                                  CONVERTING JSON TO CSV
+
+  9. Start by importing the csv module.
+//
+import csv
+
+  10. 
+
+
+
+
+
