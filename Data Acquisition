@@ -61,9 +61,25 @@ print(r_json)
 //
 import csv
 
-  10. 
+  10. Use the .json() method to access the decoded JSON data and store it in a variable called r_json.
+//
+import csv
+r_json = r.json()
 
+  11. We created an empty commute_data.csv file for you. Click on the tab above the code editor to see it. Now write the JSON data into a CSV file called commute_data.csv
+After you write the data to the file, click on the file again to see it filled with your data.
+//
+import requests
+    r = requests.get('https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_013E&for=county:*&in=state:36')
+import csv
+    r_json = r.json()
+    print(r_json)
+    with open('commute_data.csv', mode='w', newline='') as file:
+      writer = csv.writer(file)
+      writer.writerows(r_json)
 
+                                  EXPLORING DATA USING PANDAS
 
+  11. 
 
 
