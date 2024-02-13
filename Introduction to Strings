@@ -1,0 +1,66 @@
+                                INTRODUTCION TO STRINGS
+  1. Save your favorite word as a string to the variable favorite_word.
+//
+favorite_word = "Potatoe"
+
+  2. Print favorite_word.
+//
+favorite_word = "Potatoe"
+print(favorite_word)
+
+                                THEY'RE ALL LISTS!
+  3. One of the most common things that are represented by strings is names. Save your name as a string to the variable my_name.
+//
+my_name = "Lurde"
+  4. Select the first letter of the variable my_name and save it to first_initial.
+//
+my_name = "Lurde"
+first_initial = my_name[0]
+
+                                CUT ME A SLICE OF STRING
+  4. A new employee, Rodrigo Villanueva, is starting today and you need to create his account. His first_name and last_name are stored as strings in script.py. Create a variable 
+new_account by slicing the first five letters of his last_name. 
+      first_name = "Rodrigo"
+      last_name = "Villanueva"
+//
+new_account = last_name[:5]
+print(new_account)
+  5. Create a variable called temp_password by creating a slice out of the third through sixth letters of last_name. Your string should have a total of 4 characters.
+//
+temp_password = last_name[2:6]
+print(temp_password)
+
+                                CONCATENATING STRINGS
+  5. Write a function called account_generator() that takes two inputs, first_name and last_name and concatenates the first three letters of each and then returns the new account name.
+      first_name = "Julie"
+      last_name = "Blevins"
+//
+first_name = "Julie"
+last_name = "Blevins"
+def account_generator(first_name, last_name):
+  new_account_name = first_name[:3] + last_name[:3]
+  return new_account_name
+  6. Test your function on the first_name and last_name provided in script.py and save it to the variable new_account.
+//
+new_account = account_generator(first_name,last_name)
+print(new_account)
+
+                                MORE AND MORE STRING SLICING
+  6. Copeland’s Corporate Company also wants to update how they generate temporary passwords for new employees. Write a function called password_generator() that takes two inputs, 
+first_name and last_name, and then concatenates the last three letters of each and returns them as a string.
+//
+first_name = "Reiko"
+last_name = "Matsuki"
+def password_generator(first_name, last_name):
+  pas = first_name[len(first_name)-3:] + last_name[len(last_name)-3:]
+  return pas
+  7. Test your function on the provided first_name and last_name and save it to the variable temp_password
+//
+temp_password = password_generator(first_name, last_name)
+print(temp_password)
+
+
+
+
+
+
