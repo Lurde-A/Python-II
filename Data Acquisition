@@ -80,6 +80,48 @@ import csv
 
                                   EXPLORING DATA USING PANDAS
 
-  11. 
+  11. Start by importing the pandas library.
+//
+import pandas
 
+  12. Create a variable called commute_df. Set your variable to be a pandas DataFrame from the commute_data.csv file you created in the last exercise.
+//
+import pandas
+commute_df = pandas.read_csv("commute_data.csv")
 
+  13. Preview the first few rows of commute_df using the .head() method and print out the output.
+//
+import pandas
+commute_df = pandas.read_csv("commute_data.csv")
+print(commute_df.head())
+
+ 14. Notice how the column headings for commute_df show the codes the Census uses. That’s not very intuitive! Rename the headings to more descriptive names, then print the 
+first few rows of the DataFrame again to see the changes.
+//
+import pandas
+commute_df = pandas.read_csv("commute_data.csv")
+print(commute_df.head())
+commute_df.columns = ["Name", "No.all", "No. state", "State", "County"]
+print(commute_df.head())
+
+                                  SIMULATING BINOMIAL DISTRIBUTION
+  15. Start by importing the numpy library.
+//
+import numpy
+
+  16. Call the random.binomial() method to simulate
+      - a single (1) coin toss
+      - using a biased coin that has a 0.8 probability of landing on heads. We’ll call heads successful.
+      - conducted 500 times.
+      - import numpy
+//
+numpy.random.binomial(n=1, p=0.8, size=500)
+  '
+  17. Now let’s increase the number of trials per experiment. Call the random.binomial() method to simulate
+      - 100 tosses
+      - using a biased coin that has a 0.8 probability of landing on heads. We’ll call heads successful.
+      - conducted 500 times.
+//
+import numpy
+numpy.random.binomial(n=1, p=0.8, size=500)
+numpy.random.binomial(n=100, p=0.8, size=500)
