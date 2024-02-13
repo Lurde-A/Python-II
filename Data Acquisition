@@ -105,6 +105,7 @@ commute_df.columns = ["Name", "No.all", "No. state", "State", "County"]
 print(commute_df.head())
 
                                   SIMULATING BINOMIAL DISTRIBUTION
+
   15. Start by importing the numpy library.
 //
 import numpy
