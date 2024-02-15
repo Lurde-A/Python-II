@@ -1,1 +1,68 @@
-                                
+                            FORMATTING METHODS
+  1.1 You’ve been given two strings, the title of a poem and its author, and have been asked to reformat them slightly to fit the conventions of the organization’s database. Make 
+poem_title have title case and save it to poem_title_fixed.
+      poem_title = "spring storm"
+      poem_author = "William Carlos Williams"
+//
+poem_title_fixed = poem_title.title()
+
+  1.2 Print poem_title and poem_title_fixed. How did the string change?
+//
+print(poem_title)                                    PRINTED: spring storm
+print(poem_title_fixed)                                       Spring Storm
+
+  1.3 The organization’s database also needs the author’s name to be uppercase only. Make poem_author uppercase and save it to poem_author_fixed
+//
+poem_author_fixed = poem_author.upper()
+
+  1.4 Print poem_author and poem_author_fixed. Again, how did the string change?
+//
+print(poem_author)                                    PRINTED: William Carlos Williams
+print(poem_author_fixed)                                       WILLIAM CARLOS WILLIAMS
+
+                            SPLITTING STRINGS
+  2.1 In the code editor is a string of the first line of the poem Spring Storm by William Carlos Williams. Use .split() to create a list called line_one_words that contains each 
+word in this line of poetry.
+line_one = "The sky has given over"
+//
+line_one_words = line_one.split()
+print(line_one_words)
+
+                            SPLITTING STRINGS II
+  3.1 Using .split() and the provided string, create a list called author_names containing each individual author name as it’s own string.
+authors = "Audre Lorde,Gabriela Mistral,Jean Toomer,An Qi,Walt Whitman,Shel Silverstein,Carmen Boullosa,Kamala Suraiyya,Langston Hughes,Adrienne Rich,Nikki Giovanni"
+//
+author_names = authors.split(',')
+print(author_names)
+  3.2 Create another list called author_last_names that only contains the last names of the poets in the provided string.
+//
+names = [name.split() for name in author_names]
+print(names)
+author_last_names = [last_name[-1] for last_name in names]
+print(author_last_names)
+
+                            SPLITTING STRINGS III
+  4.1 The organization has sent you over the full text for William Carlos Williams poem Spring Storm. They want you to break the poem up into its individual lines. Create a list 
+called spring_storm_lines that contains a string for each line of Spring Storm.
+      spring_storm_text = \
+      """The sky has given over 
+      its bitterness. 
+      Out of the dark change 
+      all day long 
+      rain falls and falls 
+      as if it would never end. 
+      Still the snow keeps 
+      its hold on the ground. 
+      But water, water 
+      from a thousand runnels! 
+      It collects swiftly, 
+      dappled with black 
+      cuts a way for itself 
+      through green ice in the gutters. 
+      Drop after drop it falls 
+      from the withered grass-stems 
+      of the overhanging embankment."""
+//
+spring_storm_lines = spring_storm_text.split('\n')
+print(spring_storm_lines)
+
