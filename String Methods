@@ -115,5 +115,18 @@ print(toomer_bio_fixed)
   9.1 In the code editor is the first line of Gabriela Mistral’s poem God Wills It. At what index place does the word “disown” appear? Save that index place to the variable disown_placement.
 god_wills_it_line_one = "The very earth will disown you"
 //
+disown_placement = god_wills_it_line_one.find('disown')
+print(disown_placement)                                            ANSWER: 20
+
+                            .FORMAT()
+  10.1 Write a function called poem_title_card that takes two inputs: the first input should be title and the second poet. The function should use .format() to return the following 
+string:
+        - The poem "[TITLE]" is written by [POET].
+For example, if the function is given the inputs
+        - poem_title_card("I Hear America Singing", "Walt Whitman")
+It should return the string
+        - The poem "I Hear America Singing" is written by Walt Whitman.
+//
+
 
 
