@@ -25,4 +25,4 @@ updated_medical_data.
 updated_medical_data = medical_data.replace('#', '$')
 print(updated_medical_data)
 
-  3. 
+  3. We want to calculate the number of medical records in our data. Create a variable called num_records and initialize it at 0.
