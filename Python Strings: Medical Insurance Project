@@ -14,4 +14,11 @@ Sylvie Charles   ,22, 22.1
 Lorena Hodson ,65, 33.1 , #19370.0; 
 Isaac Vu ,34, 24.8,   #7045.0"""
 
-  1. 
+  1. First, take a look at the code in script.py. The string medical_data stores the medical records for ten individuals. Each record is separated by a ; 
+and contains the name, age, BMI (body mass index), and insurance cost for an individual, in that order. Print medical_data to see the output in the terminal
+//
+print(medical_data)
+
+  2. We want the insurance costs to be represented in US dollars. Replace all instances of # in medical_data with $. Store the result in a variable called updated_medical_data. Print 
+updated_medical_data.
+//
