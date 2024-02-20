@@ -26,3 +26,139 @@ updated_medical_data = medical_data.replace('#', '$')
 print(updated_medical_data)
 
   3. We want to calculate the number of medical records in our data. Create a variable called num_records and initialize it at 0.
+//
+num_records = 0
+
+  4. Next, write a for loop to iterate through the updated_medical_data string. Inside of the loop, add 1 to num_records when the current character is equal to $.
+//
+for money_sign in updated_medical_data:
+  if money_sign == '$':
+    num_records += 1
+
+  5. Outside of the loop, print num_records with the following message: There are {num_records} medical records in the data.
+//
+print("There are " + str(num_records) + " medical records in the data")
+
+  6. Let’s start off by splitting the updated_medical_data string into a list of each medical record. Remember that each medical record is separated by a ; in the string. 
+Store the result in a variable called medical_data_split and print this variable.
+//
+medical_data_split = updated_medical_data.split(";")
+print(medical_data_split)
+
+  7. Our data is now stored in a list, but it is still hard to read. Let’s split each medical record into its own list. First, define an empty list called medical_records.
+//
+medical_records=[]
+
+  8. Next, iterate through medical_data_split and for each record, split the string after each comma (,) and append the split string to medical_records. Print medical_records after the loop.
+//
+medical_records=[]
+for record in medical_data_split:
+  medical_records.append(record.split(','))
+print(medical_records)
+
+  9. Our data is now slightly more readable. However, it is not properly formatted – it contains unnecessary whitespace. To fix this, let’s start by creating an empty list 
+called medical_records_clean.
+//
+medical_records_clean = []
+
+  10. Next, use a for loop to iterate through medical_records. Inside of the loop, create an empty list called record_clean. We’ll use this list to store a formatted version 
+of each medical record.
+//
+for record in medical_records:
+  record_clean = []
+
+  11. After the record_clean variable, create a nested for loop that goes through each record: for item in record: Inside of this loop, append item.strip() to record_clean 
+to remove any whitespace from the string.
+//
+medical_records_clean = []
+for record in medical_records:
+  record_clean = []
+  for item in record:
+    record_clean.append(item.strip())
+
+  12. Finally, we need to add each cleaned up record to medical_records_clean. Outside of the nested for loop, append record_clean to medical_records_clean.
+//
+medical_records_clean = []
+for record in medical_records:
+  record_clean = []
+  for item in record:
+    record_clean.append(item.strip())
+  medical_records_clean.append(record_clean)
+
+  13. Print medical_records_clean outside of the for loops to see the output. You should see output that is formatted and much easier to read.
+//
+medical_records_clean = []
+for record in medical_records:
+  record_clean = []
+  for item in record:
+    record_clean.append(item.strip())
+  medical_records_clean.append(record_clean)
+print(medical_records_clean)
+
+  14. Our data is now clean and ready for analysis. For example, to print out the names of each of the ten individuals, we can use the following loop:
+for record in medical_records_clean:
+  print(record[0])
+Add this loop to your code and click “Save.”
+//
+for record in medical_records_clean:
+  print(record[0])
+
+  15. You want all of the names in the medical records to be in uppercase characters. In the for loop, update record[0] before the print statement so that all of the characters are uppercase.
+Click “Save” to see the result.
+//
+for record in medical_records_clean:
+  record[0] = record[0].upper()
+  print(record[0])
+
+  16. Let’s store each name, age, BMI, and insurance cost in separate lists.
+To start, create four empty lists:
+      - names
+      - ages
+      - bmis
+      - insurance_costs
+//
+names = []
+ages = []
+bmis = []
+insurance_costs = []
+
+  17. Next, iterate through medical_records_clean and for each record:
+      - Append the name to names.
+      - Append the age to ages.
+      - Append the BMI to bmis.
+      - Append the insurance cost to insurance_costs
+//
+for record in medical_records_clean:
+  names.append(record[0])
+  ages.append(record[1])
+  bmis.append(recird[2])
+  insurance_costs.append(record[3])
+
+  18. Print names, ages, bmis, and insurance_costs outside of the loop. Make sure the output is what you expect.
+//
+print("Names: " + str(names))
+print("Ages: " + str(ages))
+print("Bmis: " + str(bmis))
+print("Insurance Costs: " + str(insurance_costs))
+
+  19. Now that all of our data is in separate lists, we can easily perform analysis on that data. Let’s calculate the average BMI in our dataset. First, create a variable called 
+total_bmi and set it equal to 0.
+//
+total_bmi = 0
+
+  20. Next, use a for loop to iterate through bmis and add each bmi to total_bmi. Remember to convert bmi to a float.
+//
+total_bmi = 0
+for bmi in bmis:
+  total_bmi += float(bmi)
+
+  21. After the for loop, create a variable called average_bmi that stores the total_bmi divided by the length of the bmis list. Print out average_bmi with the following message:
+"Average BMI: {average_bmi}"
+//
+average_bmi = total_bmi / len(bmis)
+print("Average BMI: " + str(average_bmi))
+
+  EXTRA: 
+  1. Calculate the average insurance cost in insurance_costs. You will have to remove the $ in order to calculate this.
+//
+
