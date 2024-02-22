@@ -161,4 +161,24 @@ print("Average BMI: " + str(average_bmi))
   EXTRA: 
   1. Calculate the average insurance cost in insurance_costs. You will have to remove the $ in order to calculate this.
 //
+total_cost = 0
+cost = []
+for x in insurance_costs:
+  cost.append(x.replace('$', ' '))
+print(cost)
 
+for y in cost:
+  total_cost += float(y)
+print(total_cost)
+
+avg_cost = total_cost/len(insurance_costs)
+print(round(avg_cost, 2))
+
+  2. Write a for loop that outputs a string for each individual in the following format:
+      - Marina is 27 years old with a BMI of 31.1 and an insurance cost of $7010.0.
+      - Markus is 30 years old with a BMI of 22.4 and an insurance cost of $4050.0
+      ...
+      ...
+//
+for i in range(len(names)):
+  print(names[i] + ' is ' + ages[i] + ' years old with a BMI of ' + bmis[i] + ' and an insurance cost of ' + insurance_costs[i] + '.'
