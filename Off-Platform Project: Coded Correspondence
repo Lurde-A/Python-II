@@ -1,0 +1,41 @@
+    1. You just got a message from your pen pal Vishal!
+'Hey there! How have you been? I've been great! I just learned about this really cool type of cipher called a Caesar Cipher. Here's how it works: You take your message, something 
+like "hello" and then you shift all of the letters by a certain offset. 
+For example, if I chose an offset of 3 and a message of "hello", I would encode my message by shifting each letter 3 places to the left with respect to the alphabet. So "h" becomes "e", "e" becomes "b", "l" becomes "i", and "o" becomes "l". Then I have my encoded message, "ebiil"! Now I can send you my message and the offset and you can decode it by shifting each letter 3 places to the right. The best thing is that Julius Caesar himself used this cipher, that's why it's called the Caesar Cipher! Isn't that so cool! Okay, now I'm going to send you a longer encoded message that you have to decode yourself!
+    "xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"
+This message has an offset of 10. Can you decode it?
+Use your Python skills to decode Vishal’s message and print the result.
+//
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+message = "xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"
+offset = 10
+def crack_message(message, offset):
+    decrypted_message=""
+    for character in message:
+        if character in alphabet:
+            position = alphabet.find(character)
+            new_pos = (position + offset) % 26
+            new_char = alphabet[new_pos]
+            decrypted_message += new_char
+        else:
+            decrypted_message += character
+    return decrypted_message
+print(crack_message(message, offset))
+
+  2. Great job! Now send Vishal back a message using the same offset. Your message can be anything you want! Remember, encoding happens in opposite direction of decoding.
+//
+message_out = "hey there, thank you for the example - it was worth decoding!"
+offset_out = 10
+def encrypt_message(message_out, offset_out):
+  encrypted_message = ""
+  for character_out in message_out:
+    if character_out in alphabet:
+      position_out = message_out.find(character_out)
+      new_position = (position_out - offset_out) % 26
+      new_character = alphabet[new_position]
+      encrypted_message += new_character
+    else:
+      encrypted_message += character_out
+  return(encrypted_message)
+print(message_out)
+print(encrypt_message(message_out, offset_out))
