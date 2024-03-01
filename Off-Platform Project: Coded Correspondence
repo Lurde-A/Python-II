@@ -39,3 +39,27 @@ def encrypt_message(message_out, offset_out):
   return(encrypted_message)
 print(message_out)
 print(encrypt_message(message_out, offset_out))
+
+  3. Vishal sent over another reply, this time with two coded messages! You're getting the hang of this! Okay here are two more messages, the first one is coded just like before with 
+an offset of ten, and it contains a hint for decoding the second message!
+        First message:   
+            -    jxu evviuj veh jxu iusedt cuiiqwu yi vekhjuud.
+        Second message:
+            -    bqdradyuzs ygxfubxq omqemd oubtqde fa oapq kagd yqeemsqe ue qhqz yadq eqogdq!
+Decode both of these messages.
+//
+message_1 = "jxu evviuj veh jxu iusedt cuiiqwu yi vekhjuud."
+message_2 = "bqdradyuzs ygxfubxq omqemd oubtqde fa oapq kagd yqeemsqe ue qhqz yadq eqogdq!"
+print(crack_message(message_1, offset))                                                           RESULT IN TERMINAL: "the offset for the second message is fourteen."
+
+offset_2 = 14
+print(crack_message(message_2, offset_2))                                                         RESULT IN TERMINAL: "performing multiple caesar ciphers to code your messages is even more secure!"
+
+  4. Here's the coded message:        
+    "vhfinmxkl atox kxgwxkxw tee hy maxlx hew vbiaxkl hulhexmx. px'ee atox mh kxteer lmxi ni hnk ztfx by px ptgm mh dxxi hnk fxlltzxl ltyx."
+Good luck! Decode Vishal’s most recent message and see what it says!
+//
+message_3 = "vhfinmxkl atox kxgwxkxw tee hy maxlx hew vbiaxkl hulhexmx. px'ee atox mh kxteer lmxi ni hnk ztfx by px ptgm mh dxxi hnk fxlltzxl ltyx."
+print(crack_message(message_3, 7))                                                                RESULT IN TERMINAL: "computers have rendered all of these old ciphers obsolete. we'll 
+                                                                                                                       have to really step up our game if we want to keep our messages safe."
+
