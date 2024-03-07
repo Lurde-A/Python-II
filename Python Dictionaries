@@ -93,3 +93,15 @@ oscar_winners["Supporting Actress"] = "Viola Davis"
 oscar_winners["Best Picture"] = "Moonlight"
 print(oscar_winners)
 
+                      DICT COMPREHENSIONS
+
+  14. You have two lists, representing some drinks sold at a coffee shop and the milligrams of caffeine in each. First, create a variable called zipped_drinks that is an iterator 
+of pairs between the drinks list and the caffeine list.
+//
+zipped_drinks = zip(drinks, caffeine)
+
+  15. Create a dictionary called drinks_to_caffeine by using a dict comprehension that goes through the zipped_drinks iterator and turns each tuple pair into a key:value item.
+//
+drinks_to_caffeine = {key:value for key, value in zipped_drinks}
+
+                      REVIEW
