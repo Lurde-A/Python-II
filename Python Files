@@ -111,6 +111,64 @@ with open('cool_csv.csv') as cool_csv_file:
 
                       READING DIFFERENT TYPES OF CSV FILES
 
-  20.
+  20. Import the csv module.
+//
+import csv
+  21. Open up the file books.csv in the variable books_csv.
+//
+import csv
+with open('books.csv', newline='') as books_csv:
+  22. Create a DictReader instance that uses the @ symbol as a delimiter to read books_csv. Save the result in a variable called books_reader.
+//
+import csv
+with open('books.csv', newline='') as books_csv:
+  books_reader = csv.DictReader(books_csv, delimiter='@')
+  23. Create a list called isbn_list, iterate through books_reader to get the ISBN number of every book in the CSV file. Use the ['ISBN'] key for the dictionary objects passed to it.
+//
+import csv
+with open('books.csv', newline='') as books_csv:
+  books_reader = csv.DictReader(books_csv, delimiter='@')
+  isbn_list=[]
+  for book in books_reader:
+    isbn_list.append(book['ISBN'])
+  print(isbn_list)
 
+                      WRITING A CSV FILE
 
+  24. We have a list in the workspace access_log which is a list of dictionaries we want to write out to a CSV file. Let’s start by importing the csv module.
+GIVEN:   access_log = [{'time': '08:39:37', 'limit': 844404, 'address': '1.227.124.181'}, {'time': '13:13:35', 'limit': 543871, 'address': '198.51.139.193'}, 
+                       {'time': '19:40:45', 'limit': 3021, 'address': '172.1.254.208'}, {'time': '18:57:16', 'limit': 67031769, 'address': '172.58.247.219'}, 
+                       {'time': '21:17:13', 'limit': 9083, 'address': '124.144.20.113'}, {'time': '23:34:17', 'limit': 65913, 'address': '203.236.149.220'}, 
+                       {'time': '13:58:05', 'limit': 1541474, 'address': '192.52.206.76'}, {'time': '10:52:00', 'limit': 11465607, 'address': '104.47.149.93'}, 
+                       {'time': '14:56:12', 'limit': 109, 'address': '192.31.185.7'}, {'time': '18:56:35', 'limit': 6207, 'address': '2.228.164.197'}]
+         fields = ['time', 'address', 'limit']
+//
+import csv
+  25. Open up the file logger.csv in the temporary variable logger_csv. Don’t forget to open the file in write-mode.
+//
+import csv
+with open('logger.csv', 'w') as logger_csv:
+  26. Create a csv.DictWriter instance called log_writer. Pass logger_csv as the first argument and then fields as a keyword argument to the keyword fieldnames.
+//
+import csv
+with open('logger.csv', 'w') as logger_csv:
+  log_writer = csv.DictWriter(logger_csv, fieldnames=fields)
+  27. Write the header to log_writer using the .writeheader() method.
+//
+import csv
+with open('logger.csv', 'w') as logger_csv:
+  log_writer = csv.DictWriter(logger_csv, fieldnames=fields)
+  log_writer.writeheader()
+  28. Iterate through the access_log list and add each element to the CSV using log_writer.writerow().
+//
+import csv
+with open('logger.csv', 'w') as logger_csv:
+  log_writer = csv.DictWriter(logger_csv, fieldnames=fields)
+  log_writer.writeheader()
+  for log in access_log:
+    log_writer.writerow(log)
+
+                      READING A JSON FILE
+
+  29. Let’s read a JSON file! Start by importing the json module.
+//
