@@ -28,5 +28,55 @@ with open('how_many_lines.txt') as lines_doc:
 
   6. Using a with statement, create a file object pointing to the file just_the_first.txt. Store that file object in the variable first_line_doc.
 //
+with open('just_the_first.txt') as first_line_doc:
+  7. Save the first line of just_the_first.txt into the variable first_line.
+//
+with open('just_the_first.txt') as first_line_doc:
+  first_line = first_line_doc.readline()
+  8. Print out the variable first_line.
+//
+with open('just_the_first.txt') as first_line_doc:
+  first_line = first_line_doc.readline()
+  print(first_line)
 
+                      WRITING A FILE
 
+  9. Create a file object for the file bad_bands.txt using the open() function with the w argument. Assign this object to the temporary variable bad_bands_doc.
+//
+with open('bad_bands.txt', 'w') as bad_bands_doc:
+  10. Use the bad_bands_doc.write() method to add the name of a musical group you dislike to the document bad_bands.
+//
+with open('bad_bands.txt', 'w') as bad_bands_doc:
+  bad_bands_doc.write("Bunke")
+
+                      APPENDING TO A FILE
+
+  11. We’ve got a file, cool_dogs.txt, filled with all the cool dogs we know. Somehow while compiling this list we forgot about one very cool dog. Let’s fix that problem by adding him 
+to our cool_dogs.txt.
+Open up our file cool_dogs.txt in append-mode and assign it to the file object cool_dogs_file.
+//
+with open('cool_dogs.txt', 'a') as cool_dogs_file:
+  12. Inside your with block, add “Air Buddy\n” to cool_dogs.txt. Air Buddy is a Golden Retriever that plays basketball, which more than qualifies him for this list. 
+The \n character moves to the next line after appending the string.
+//
+with open('cool_dogs.txt', 'a') as cool_dogs_file:
+  cool_dogs_file.write('Air Buddy\n')
+
+                      WHAT'S WITH "WITH"
+
+  13. In script.py there’s a file object that doesn’t get closed correctly. Let’s fix it by changing the syntax! Remove this line:
+close_this_file = open('fun_file.txt')
+And change it to use the with syntax from our previous exercises. Remember to indent the rest of the body so that we don’t get an IndentError.
+                                                GIVEN:   close_this_file = open('fun_file.txt')
+                                                         setup = close_this_file.readline()
+                                                         punchline = close_this_file.readline()
+                                                         print(setup)
+//
+with open('fun_file.txt') as close_this_file:
+  setup = close_this_file.readline()
+  punchline = close_this_file.readline()
+  print(setup)
+
+                      WHAT IS CSV FILE?
+
+  14. 
