@@ -79,4 +79,38 @@ with open('fun_file.txt') as close_this_file:
 
                       WHAT IS CSV FILE?
 
-  14. 
+  14. CSV files are just plain text files! Open logger.csv using our standard with syntax, saving the file object in the temporary variable log_csv_file.
+//
+with open('logger.csv') as log_csv_file:
+  15. Print out the contents of logger.csv by calling .read() on the file. Notice that it is parsed as a string.
+//
+with open('logger.csv') as log_csv_file:
+  print(log_csv_file.read())
+
+                      READING A CSV FILE
+
+  16. Import the csv module.
+//
+import csv
+  17. Open up the file cool_csv.csv in the temporary variable cool_csv_file.
+//
+import csv
+with open('cool_csv.csv') as cool_csv_file:
+  18. Using csv.DictReader read the contents of cool_csv_file into a new variable called cool_csv_dict.
+//
+import csv
+with open('cool_csv.csv') as cool_csv_file:
+  cool_csv_dict = csv.DictReader(cool_csv_file)
+  19. cool_csv.csv includes a cool fact about every person in the CSV. For each row in cool_csv_dict print out that row’s "Cool Fact".
+//
+import csv
+with open('cool_csv.csv') as cool_csv_file:
+  cool_csv_dict = csv.DictReader(cool_csv_file)
+  for row in cool_csv_dict:
+    print(row['Cool Fact'])
+
+                      READING DIFFERENT TYPES OF CSV FILES
+
+  20.
+
+
