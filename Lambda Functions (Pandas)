@@ -1,0 +1,42 @@
+                                  CONTAINS A
+
+  1. Create a lambda function named contains_a that takes an input word and returns True if the input contains the letter 'a'. Otherwise, return False.
+GIVEN: print(contains_a("banana"))
+       print(contains_a("apple"))
+       print(contains_a("cherry"))
+//
+contains_a = lambda word: 'a' in word
+print(contains_a("banana"))
+print(contains_a("apple"))
+print(contains_a("cherry"))
+
+                                  LONG STRING
+
+  2. Create a lambda function named long_string that takes an input str and returns True if the string has over 12 characters in it. Otherwise, return False.
+//
+long_string = lambda str: len(str) > 12
+print(long_string("short"))
+print(long_string("photosynthesis"))
+
+                                  ENDS WITH A
+
+  3. Create a lambda function named ends_in_a that takes an input str and returns True if the last character in the string is an a. Otherwise, return False.
+//
+ends_in_a = lambda str: str[-1] == 'a'
+print(ends_in_a("data"))
+print(ends_in_a("aardvark"))
+
+                                  DOUBLE OR ZERO
+
+  4. Create a lambda function named double_or_zero that takes an integer named num. If num is greater than 10, return double num. Otherwise, return 0.
+//
+double_or_zero = lambda num: num*2 if num > 10 else 0
+print(double_or_zero(15))
+print(double_or_zero(5))
+
+
+
+
+
+
+
