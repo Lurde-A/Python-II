@@ -131,6 +131,7 @@ print(type(df))
 
                       SELECTING MULTIPLE COLUMNS
 
-  11. Now, you want to compare visits to the Northern and Southern clinics. Create a variable called clinic_north_south that contains ONLY the data from the columns clinic_north and clinic_south.
+  11. Now, you want to compare visits to the Northern and Southern clinics. Create a variable called clinic_north_south that contains ONLY the data from the columns clinic_north 
+and clinic_south.
 //
 
