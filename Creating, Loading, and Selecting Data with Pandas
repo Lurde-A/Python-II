@@ -37,6 +37,75 @@ df2 = pd.DataFrame([
   columns=['Store ID', 'Location', 'Number of Employees'])
 print(df2)
 
+                      COMMA SEPARATED VALUES
+
+  3. You run a cupcake store and want to create a record of all of the cupcakes that you offer. Write the following data as a CSV in cupcakes.csv.
+name      	    cake_flavor	      frosting_flavor	      topping
+Chocolate Cake	chocolate	        chocolate	            chocolate shavings
+Birthday Cake	  vanilla          	vanilla	              rainbow sprinkles
+Carrot Cake	    carrot	          cream cheese	        almonds
+//
+name,cake_flavor,frosting_flavor,topping
+Chocolate Cake,chocolate,chocolate,chocolate shavings
+Birthday Cake,vanilla,vanilla,rainbow sprinkles
+Carrot Cake,carrot,cream cheese,almonds
+
+                      LOADING AND SAVING CSVs
+
+  4. You’re working for the County of Whoville and you just received a CSV of data about the different cities in your county. Read the CSV 'sample.csv' into a variable called df, 
+so that you can learn more about the cities.
+//
+import codecademylib3
+import pandas as pd
+df = pd.read_csv('sample.csv')
+  5. Let’s inspect the CSV. Type print(df) on the next line and then run your code. What sort of data were you sent?
+//
+import codecademylib3
+import pandas as pd
+df = pd.read_csv('sample.csv')
+print(df)
+
+                      INSPECT A DATAFRAME
+
+  6. You’re working for a Hollywood studio, trying to use data to predict the next big hit. Load the CSV imdb.csv into a variable called df, so that you can learn about popular 
+movies from the past 90 years.
+//
+import codecademylib3
+import pandas as pd
+df = pd.read_csv('imdb.csv')
+
+  7. Let’s learn about these movies. Paste the following code into script.py: print(df.head()) What happens when you press “Run”?
+//
+import codecademylib3                                              RESULT:
+import pandas as pd                                                   id                                       name   genre  year  imdb_rating
+#load the CSV below:                                               0   1                                     Avatar  action  2009          7.9
+df = pd.read_csv('imdb.csv')                                       1   2                             Jurassic World  action  2015          7.3
+print(df.head())                                                   2   3                               The Avengers  action  2012          8.1
+                                                                   3   4                            The Dark Knight  action  2008          9.0
+                                                                   4   5  Star Wars: Episode I - The Phantom Menace  action  1999          6.6
+
+  8. What exactly is in this dataset? Paste the following code into script.py to learn more about this data: print(df.info()) What happens when you press “Run”?
+//
+import codecademylib3                                              RESULT: 
+import pandas as pd                                                <class 'pandas.core.frame.DataFrame'>
+#load the CSV below:                                               RangeIndex: 220 entries, 0 to 219
+df = pd.read_csv('imdb.csv')                                       Data columns (total 5 columns):
+print(df.info())                                                   id             220 non-null int64
+                                                                   name           220 non-null object
+                                                                   genre          220 non-null object
+                                                                   year           220 non-null int64
+                                                                   imdb_rating    220 non-null float64
+                                                                   dtypes: float64(1), int64(2), object(2)
+                                                                   memory usage: 8.7+ KB
+                                                                   None
+
+                      SELECT COLUMNS
+
+9. The DataFrame df represents data collected by four health clinics run by the same organization. Each row represents a month from January through June and shows the number of 
+appointments made at four different clinics.
+You want to analyze what’s been happening at the North location. Create a variable called clinic_north that contains ONLY the data from the column clinic_north.
+//
+
 
 
 
