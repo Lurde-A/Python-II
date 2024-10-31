@@ -7,7 +7,6 @@ Product ID	Product Name	Color
 2	          t-shirt      	green
 3	          skirt	        red
 4	          skirt	        black
-
 We have already filled in the information for Product ID in df1. Add the code to create the columns Product Name and Color and their associated data.
 //
 import codecademylib3
@@ -16,4 +15,28 @@ df1 = pd.DataFrame({
   'Product ID': [1, 2, 3, 4], 'Product Name': ['t-shirt', 't-shirt', 'skirt', 'skirt'], 'Color': ['blue', 'green', 'red', 'black']
   })
 print(df1)
+
+                      CREATE A DATAFRAME II
+
+  2. You’re running a chain of pita shops called Pita Power. You want to create a DataFrame with information on your different store locations.
+Use a list of lists to create a DataFrame with the following data:
+Store ID	Location	    Number of Employees
+1	        San Diego	    100
+2	        Los Angeles	  120
+3	        San Francisco	90
+4	        Sacramento  	115
+We have filled in the information for the first two rows in df2. Add the code to create the 3rd and 4th rows, and the column names.
+//
+import codecademylib3
+import pandas as pd
+df2 = pd.DataFrame([
+  [1, 'San Diego', 100],
+  [2, 'Los Angeles', 120],
+  [3, 'San Francisco', 90],
+  [4, 'Sacramento', 115]],
+  columns=['Store ID', 'Location', 'Number of Employees'])
+print(df2)
+
+
+
 
