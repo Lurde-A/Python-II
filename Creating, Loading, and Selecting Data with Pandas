@@ -190,6 +190,70 @@ print(march)                                                            clinic_e
 
                       SELECTING MULTIPLE ROWS
 
-  14. 
+  14. One of your doctors thinks that there are more clinic visits in the late Spring. Write a command that will produce a DataFrame made up of the data for April, May, and June 
+from df for all four sites (rows 3 through 6), and save it to april_may_june.
+  15. Inspect april_may_june using print.
+GIVEN: 
+import codecademylib3
+import pandas as pd
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west'])
+//
+april_may_june = df.iloc[3:6]                                    RESULT:     month	clinic_east	clinic_north	clinic_south	clinic_west
+print(april_may_june)                                                     3	 April	  80	        80	          54	          180
+                                                                          4	 May	    51	        54	          54	          154
+                                                                          5	 June	    112	        109	          79	          129
 
+                      SELECT ROWS WITH LOGIC I
+
+  16. You’re going to staff the clinic for January of this year. You want to know how many visits took place in January of last year, to help you prepare. Create variable january using 
+a logical statement that selects the row of df where the 'month' column is 'January'.
+  17. Inspect january using print.
+GIVEN:
+import codecademylib3
+import pandas as pd
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west'])
+//
+january = df[df.month == 'January']                               RESULT:     month	   clinic_east	clinic_north	clinic_south	clinic_west
+  print(january)                                                           0	January	     100	        100	           23	         100
+
+                      SELECT ROWS WITH LOGIC II
+
+  18. You want to see how the number of clinic visits changed between March and April. Create the variable march_april, which contains the data from March and April. Do this using 
+two logical statements combined using |, which means “or”.
+  19. Inspect march_april using print.
+GIVEN:
+import codecademylib3
+import pandas as pd
+df = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west'])
+//
+march_april = df[(df.month == "March") | (df.month == "April")]             RESULT:     month	   clinic_east	clinic_north	clinic_south	clinic_west
+print(march_april)                                                                  2   March      81           96            65            96
+                                                                                    3	  April	     80	          80	          54	          180
 
