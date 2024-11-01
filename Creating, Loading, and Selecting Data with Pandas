@@ -257,3 +257,6 @@ march_april = df[(df.month == "March") | (df.month == "April")]             RESU
 print(march_april)                                                                  2   March      81           96            65            96
                                                                                     3	  April	     80	          80	          54	          180
 
+                      SELECT ROWS WITH LOGIC III
+
+  20. 
