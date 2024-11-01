@@ -324,4 +324,42 @@ print(df2)                                                           RESULT:    
 
                       REVIEW
 
-  25. 
+  25. In this example, you’ll be the data analyst for ShoeFly.com, a fictional online shoe store. You’ve seen this data; now it’s your turn to work with it!
+Load the data from shoefly.csv into the variable orders.
+GIVEN: 
+import codecademylib3
+import pandas as pd
+//
+orders = pd.read_csv('shoefly.csv')
+  26. Inspect the first 5 lines of the data.
+//
+first_lines = orders.head(5)                                         RESULT:    id	  first_name	last_name	  email	                        shoe_type	    shoe_material	  shoe_color
+print(first_lines)                                                           0	54791	Rebecca	    Lindsay	    RebeccaLindsay57@hotmail.com	clogs	        faux-leather	  black
+                                                                             1	53450	Emily	      Joyce	      EmilyJoyce25@gmail.com	      ballet flats	faux-leather	  navy
+                                                                             2	91987	Joyce	      Waller    	Joyce.Waller@gmail.com	      sandals	      fabric	        black
+                                                                             3	14437	Justin	    Erickson	  Justin.Erickson@outlook.com	  clogs	        faux-leather	  red
+                                                                             4	79357	Andrew	    Banks	      AB4318@gmail.com	            boots	        leather	        brown
+  27. Your marketing department wants to send out an email blast to everyone who ordered shoes! Select all of the email addresses from the column email and save them to a variable 
+called emails.
+//
+emails = orders.email
+  28. Frances Palmer claims that her order was wrong. What did Frances Palmer order? Use logic to select that row of orders and save it to the variable frances_palmer.
+//
+frances_palmer = orders[orders.first_name == 'Frances']             RESULT:    id	    first_name	last_name	  email	                        shoe_type	    shoe_material	  shoe_color
+print(frances_palmer)                                                       9  62083	Frances	    Palmer	    FrancesPalmer50@gmail.com	    wedges	      leather	        white
+  29. We need some customer reviews for our comfortable shoes. Select all orders for shoe_type: clogs, boots, and ballet flats and save them to the variable comfy_shoes.
+//
+comfy_shoes = orders[orders.shoe_type.isin(['clogs', 'boots', 'ballet flats'])]
+                                                                    RESULT:    id	    first_name	last_name	  email	                        shoe_type	    shoe_material	  shoe_color
+                                                                            0	 54791	Rebecca	    Lindsay	    RebeccaLindsay57@hotmail.com	clogs	        faux-leather	  black
+                                                                            1	 53450	Emily	      Joyce	      EmilyJoyce25@gmail.com	      ballet flats	faux-leather	  navy
+                                                                            3	 14437	Justin	    Erickson	  Justin.Erickson@outlook.com	  clogs	        faux-leather	  red
+                                                                            4	 79357	Andrew	    Banks      	AB4318@gmail.com	            boots	        leather	        brown
+                                                                            6	 20487	Thomas	    Jensen	    TJ5470@gmail.com	            clogs	        fabric	        navy
+                                                                            7	 76971	Janice	    Hicks	      Janice.Hicks@gmail.com      	clogs	        faux-leather  	navy
+                                                                            8	 21586	Gabriel	    Porter	    GabrielPorter24@gmail.com	    clogs	        leather	        brown
+                                                                            10 91629	Jessica	    Hale	      JessicaHale25@gmail.com	      clogs        	leather	        red
+                                                                            12 45832	Susan	      Dennis	    SusanDennis58@gmail.com	      ballet        flats	fabric  	white
+                                                                            14 73431	Rebecca	    Charles	    Rebecca.Charles@gmail.com	    boots	        faux-leather	  white
+                                                                            16 39888	Vincent	    Stephenson	VS4753@outlook.com	          boots	        leather        	black
+                                                                            17 35961	Roy	        Tillman	    RoyTillman20@gmail.com	      boots	        leather	        white
