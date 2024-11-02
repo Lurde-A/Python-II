@@ -99,7 +99,12 @@ print(mylambda("Testas"))                RESULT: "Ts"
 
                         REVIEWING LAMBDA FUNCTION: IF STATEMENTS
 
-  6. 
+  6. You are managing the webpage of a somewhat violent video game and you want to check that each user’s age is 13 or greater when they visit the site.
+Write a lambda function that takes an inputted age and either returns Welcome to BattleCity! if the user is 13 or older or You must be 13 or older if they are younger than 13. 
+Your lambda function should be called mylambda.
+GIVEN:
+import codecademylib3
+//
 
 
 
