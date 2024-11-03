@@ -105,6 +105,70 @@ Your lambda function should be called mylambda.
 GIVEN:
 import codecademylib3
 //
+mylambda = lambda age: 'Welcome to BattleCity!' if age >= 13 else 'You must be 13 or older'
+
+                        APPLYING A LAMBDA TO A COLUMN
+
+  7. Create a lambda function get_last_name which takes a string with someone’s first and last name (i.e., John Smith), and returns just the last name (i.e., Smith).
+GIVEN:
+import codecademylib3                                                    id	    name	            hourly_wage	  hours_worked
+import pandas as pd                                                   0	 10310	Lauren Durham	    19	          43
+df = pd.read_csv('employees.csv')                                     1	 18656	Grace Sellers	    17	          40
+                                                                      2	 61254	Shirley Rasmussen	16	          30
+                                                                      3	 16886	Brian Rojas	      18	          47
+                                                                      4	 89010	Samantha Mosley	  11	          38
+                                                                      5	 87246	Louis Guzman	    14	          39
+                                                                      6	 20578	Denise Mcclure	  15	          40
+                                                                      7	 12869	James Raymond	    15	          32
+                                                                      8	 53461	Noah Collier	    18	          35
+                                                                      9	 14746	Donna Frederick	  20	          41
+                                                                      10 71127	Shirley Beck	    14	          32
+                                                                      11 92522	Christina Kelly	  8	            44
+                                                                      12 22447	Brian Noble	      11	          39
+                                                                      13 61654	Randy Key	        16	          38
+                                                                      14 16988	Diana Stewart	    14	          48
+                                                                      15 68619	Timothy Sosa	    14	          42
+                                                                      16 59949	Betty Skinner	    11	          48
+                                                                      17 81418	Janet Maxwell	    12	          38
+                                                                      18 27267	Madison Johnston	20	          37
+                                                                      19 19985	Virginia Nichols	13	          49
+//
+get_last_name = lambda first_name: first_name.split(' ')[-1]
+  8. The DataFrame df represents the hours worked by different employees over the course of the week. It contains the following columns:
+'name': The employee’s name
+'hourly_wage': The employee’s hourly wage
+'hours_worked': The number of hours worked this week
+Use the lambda function get_last_name to create a new column last_name with only the employees’ last name.
+//
+get_last_name = lambda first_name: first_name.split(' ')[-1]
+df['last_name'] = df.name.apply(get_last_name)
+print(df)                                                  RESULT:
+                                                                         id	    name	            hourly_wage	  hours_worked  last_name
+                                                                      0	 10310	Lauren Durham	    19	          43            Durham
+                                                                      1	 18656	Grace Sellers	    17	          40            Sellers
+                                                                      2	 61254	Shirley Rasmussen	16	          30            Rasmussen
+                                                                      3	 16886	Brian Rojas	      18	          47            Rojas
+                                                                      4	 89010	Samantha Mosley	  11	          38            Mosley
+                                                                      5	 87246	Louis Guzman	    14	          39            Guzman
+                                                                      6	 20578	Denise Mcclure	  15	          40            Mcclure
+                                                                      7	 12869	James Raymond	    15	          32            Raymond
+                                                                      8	 53461	Noah Collier	    18	          35            Collier
+                                                                      9	 14746	Donna Frederick	  20	          41            Frederick
+                                                                      10 71127	Shirley Beck	    14	          32            Beck
+                                                                      11 92522	Christina Kelly	  8	            44            Kelly
+                                                                      12 22447	Brian Noble	      11	          39            Noble
+                                                                      13 61654	Randy Key	        16	          38            Key
+                                                                      14 16988	Diana Stewart	    14	          48            Stewart
+                                                                      15 68619	Timothy Sosa	    14	          42            Sosa
+                                                                      16 59949	Betty Skinner	    11	          48            Skinner
+                                                                      17 81418	Janet Maxwell	    12	          38            Maxwell
+                                                                      18 27267	Madison Johnston	20	          37            Johnston
+                                                                      19 19985	Virginia Nichols	13	          49            Nichols
+
+                        APPLYING A LAMBDA TO A ROW
+
+  9. 
+
 
 
 
