@@ -76,4 +76,26 @@ print(inventory)                                  RESULT:
                                                             8	  Staten Island	  planter	          20 inch terracotta planter	0	          17.99	   False       0.0
                                                             9	  Staten Island	  planter	          8 inch plastic planter	    53        	3.99	   True	       211.47
                                                             ...
-  8. 
+  8. The Marketing department wants a complete description of each product for their catalog. The following lambda function combines product_type and product_description into a single string:
+combine_lambda = lambda row: '{} - {}'.format(row.product_type, row.product_description)
+Paste this function into script.py.
+  9. Using combine_lambda, create a new column in inventory called full_description that has the complete description of each product.
+//
+combine_lambda = lambda row: \
+    '{} - {}'.format(row.product_type,
+                     row.product_description)
+
+inventory['full_description'] = inventory.apply(combine_lambda, axis=1)
+print(inventory)                                  RESULT:
+                                                                location	      product_type	    product_description	        quantity	  price    in_stock    total_value    product_description
+                                                            0  	Staten Island  	seeds	            daisy	                      4	          6.99	   True	       27.96	        seeds - daisy
+                                                            1	  Staten Island	  seeds	            calla lily	                46	        19.99	   True	       919.54	        seeds - calla lily
+                                                            2	  Staten Island	  seeds	            tomato	                    85	        13.99    True	       1189.15	      seeds - tomato
+                                                            3	  Staten Island	  garden tools	    rake	                      4	          13.99	   True	       55.96	        garden tools - rake
+                                                            4	  Staten Island	  garden tools    	wheelbarrow	                0          	89.99	   False	     0.0	          garden tools - wheelbarrow
+                                                            5	  Staten Island	  garden tools	    spade	                      93        	19.99	   True	       1859.07	      garden tools - spade
+                                                            6	  Staten Island	  pest_control	    insect killer	              74        	12.99	   True	       961.26	        pest_control - insect killer
+                                                            7	  Staten Island	  pest_control	    weed killer	                8	          23.99	   True        191.92	        pest_control - weed killer
+                                                            8	  Staten Island	  planter	          20 inch terracotta planter	0	          17.99	   False	     0.0	          planter - 20 inch terracotta planter
+                                                            9	  Staten Island	  planter          	8 inch plastic planter	    53	        3.99	   True	       211.47	        planter - 8 inch plastic planter
+                                                            ...
