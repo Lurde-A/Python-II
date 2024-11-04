@@ -48,6 +48,32 @@ print(seed_request)                                RESULT:
   6. Add a column to inventory called in_stock which is True if quantity is greater than 0 and False if quantity equals 0.
 //
 inventory['in_stock'] = inventory.apply(lambda row: 'True' if row['quantity']>0 else 'False', axis=1)
-print(inventory)
+print(inventory)                                  RESULT:
+                                                                location	      product_type	    product_description	        quantity	  price    in_stock
+                                                            0	  Staten Island	  seeds	            daisy	                      4	          6.99	   True
+                                                            1	  Staten Island  	seeds	            calla lily	                46	        19.99	   True
+                                                            2  	Staten Island	  seeds	            tomato	                    85	        13.99	   True
+                                                            3  	Staten Island	  garden            tools	rake	                4	          13.99	   True
+                                                            4	  Staten Island	  garden            tools	wheelbarrow	          0	          89.99	   False
+                                                            5	  Staten Island	  garden            tools	spade	                93	        19.99	   True
+                                                            6	  Staten Island	  pest_control	    insect killer	              74	        12.99	   True
+                                                            7	  Staten Island	  pest_control	    weed killer	                8	          23.99	   True
+                                                            8	  Staten Island	  planter	          20 inch terracotta planter	0	          17.99	   False
+                                                            ...
   7. Petal Power wants to know how valuable their current inventory is. Create a column called total_value that is equal to price multiplied by quantity.
-
+//
+inventory['total_value'] = inventory.price * inventory.quantity
+print(inventory)                                  RESULT:
+                                                                location	      product_type	    product_description	        quantity	  price    in_stock    total_value
+                                                            0	  Staten Island	  seeds	            daisy	                      4	          6.99	   True	       27.96
+                                                            1	  Staten Island	  seeds            	calla lily	                46        	19.99	   True        919.54
+                                                            2	  Staten Island	  seeds	            tomato	                    85	        13.99	   True        1189.15
+                                                            3	  Staten Island	  garden tools	    rake	                      4	          13.99	   True        55.96
+                                                            4	  Staten Island	  garden tools	    wheelbarrow	                0	          89.99	   False	     0.0
+                                                            5	  Staten Island	  garden tools	    spade	                      93        	19.99	   True	       1859.07
+                                                            6	  Staten Island	  pest_control	    insect killer              	74        	12.99	   True	       961.26
+                                                            7	  Staten Island	  pest_control	    weed killer                	8	          23.99	   True	       191.92
+                                                            8	  Staten Island	  planter	          20 inch terracotta planter	0	          17.99	   False       0.0
+                                                            9	  Staten Island	  planter	          8 inch plastic planter	    53        	3.99	   True	       211.47
+                                                            ...
+  8. 
