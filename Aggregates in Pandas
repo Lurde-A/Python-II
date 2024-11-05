@@ -31,4 +31,26 @@ num_colors = orders.shoe_color.nunique()
 print(num_colors)                            RESULT:
                                                         5
 
+                        CALCULATING AGGREGATE FUNCTIONS I
+GIVEN:
+import codecademylib3
+import pandas as pd
+orders = pd.read_csv('orders.csv')
+  4. Let’s return to our orders data from ShoeFly.com. In the previous exercise, our finance department wanted to know the most expensive shoe that we sold. Now, they want to know 
+the most expensive shoe for each shoe_type (i.e., the most expensive boot, the most expensive ballet flat, etc.). Save your answer to the variable pricey_shoes.
+  5.Examine the object that you just created using:
+print(pricey_shoes)
+//
+pricey_shoes = orders.groupby('shoe_type').price.max()
+print(pricey_shoes)                          RESULT:
+                                                        shoe_type     price
+                                                        ballet flats	498
+                                                        sandals      	498
+                                                        stilettos    	468
+                                                        wedges	      488
+  5. What type of object is pricey_shoes? Enter the following code to check: print(type(pricey_shoes))
+//
+print(type(pricey_shoes))                   RESULT: 
+                                                        <class 'pandas.core.series.Series'>
 
+                        CALCULATING AGGREGATE FUNCTIONS II
