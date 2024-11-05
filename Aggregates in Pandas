@@ -77,4 +77,20 @@ orders = pd.read_csv('orders.csv')
   9. Once more, we’ll return to the data from ShoeFly.com. Our Marketing team says that it’s important to have some affordably priced shoes available for every color of shoe that we sell.
 Let’s calculate the 25th percentile for shoe price for each shoe_color to help Marketing decide if we have enough cheap shoes on sale. Save the data to the variable cheap_shoes.
 Note: Be sure to use reset_index() at the end of your query so that cheap_shoes is a DataFrame.
+  10. Display cheap_shoes using print.
 //
+orders = pd.read_csv('orders.csv')
+print(orders.head(10))
+cheap_shoes = orders.groupby('shoe_color').price.apply(lambda x: np.percentile(x, 25)).reset_index()
+print(cheap_shoes)                   RESULT: 
+                                                        shoe_color     price
+                                                      0	black	        130.0
+                                                      1	brown	        248.0
+                                                      2	navy	        200.0
+                                                      3	red	          157.0
+                                                      4	white	        188.0
+
+                        CALCULATING AGGREGATE FUNCTIONS IV
+GIVEN:
+
+
