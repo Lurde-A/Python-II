@@ -54,3 +54,27 @@ print(type(pricey_shoes))                   RESULT:
                                                         <class 'pandas.core.series.Series'>
 
                         CALCULATING AGGREGATE FUNCTIONS II
+GIVEN:                                                              	shoe_type	    price
+import codecademylib3                                               0	ballet flats	498
+import pandas as pd                                                 1	sandals	      498
+orders = pd.read_csv('orders.csv')                                  2	stilettos	    468
+pricey_shoes = orders.groupby('shoe_type').price.max()              3	wedges	      488
+  6. Modify your code from the previous exercise so that it ends with reset_index, which will change pricey_shoes into a DataFrame.
+  7. Examine the object that you’ve just created using the following code: print(pricey_shoes)
+//
+pricey_shoes = orders.groupby('shoe_type').price.max().reset_index()
+  8. Now, what type of object is pricey_shoes? Enter the following code to check: print(type(pricey_shoes))
+//
+print(type(pricey_shoes))                   RESULT: 
+                                                        <class 'pandas.core.frame.DataFrame'>
+
+                        CALCULATING AGGREGATE FUNCTIONS III
+GIVEN:
+import codecademylib3
+import numpy as np
+import pandas as pd
+orders = pd.read_csv('orders.csv')
+  9. Once more, we’ll return to the data from ShoeFly.com. Our Marketing team says that it’s important to have some affordably priced shoes available for every color of shoe that we sell.
+Let’s calculate the 25th percentile for shoe price for each shoe_color to help Marketing decide if we have enough cheap shoes on sale. Save the data to the variable cheap_shoes.
+Note: Be sure to use reset_index() at the end of your query so that cheap_shoes is a DataFrame.
+//
