@@ -56,8 +56,91 @@ print(clicks_pivot)                         RESULT:
                                                        1	facebook	  324  	180
                                                        2	google	    441  	239
                                                        3	twitter	    149	  66
-  6. 
+  6. Create a new column in clicks_pivot called percent_clicked which is equal to the percent of users who clicked on the ad from each utm_source. Was there a difference in click 
+rates for each source?
+//
+clicks_pivot['percent_clicked'] = (clicks_pivot[True] / (clicks_pivot[True] + clicks_pivot[False]))*100
+print(clicks_pivot)                         RESULT:
+                                                        	utm_source	False	True	percent_clicked
+                                                      0	  email	      175	  80	  31.372549019607842
+                                                      1	  facebook	  324	  180	  35.714285714285715
+                                                      2	  google	    441	  239  	35.147058823529406
+                                                      3	  twitter	    149	  66	  30.697674418604652
 
+                              ANALYZING AN A/B TEST
+
+  7. The column experimental_group tells us whether the user was shown Ad A or Ad B. Were approximately the same number of people shown both ads?
+//
+experimental = ad_clicks.groupby(['experimental_group']).user_id.count().reset_index()
+print(experimental)                         RESULT:
+                                                        	experimental_group	user_id
+                                                      0  	A	                  827
+                                                      1	  B	                  827
+  8. Using the column is_click that we defined earlier, check to see if a greater percentage of users clicked on Ad A or Ad B.
+//
+A_or_B = ad_clicks.groupby(['experimental_group', 'is_click']).user_id.count().reset_index()
+A_or_B_pivot = A_or_B.pivot(columns = 'is_click', index = 'experimental_group', values = 'user_id')
+print(A_or_B_pivot)                         RESULT:
+                                                        	False	True
+                                                      A	  517	  310
+                                                      B	  572	  255
+  9. The Product Manager for the A/B test thinks that the clicks might have changed by day of the week. Start by creating two DataFrames: a_clicks and b_clicks, which contain only 
+the results for A group and B group, respectively.
+//
+a_clicks = ad_clicks[ad_clicks.experimental_group == 'A']
+b_clicks = ad_clicks[ad_clicks.experimental_group == 'B']
+  10. For each group (a_clicks and b_clicks), calculate the percent of users who clicked on the ad by day.
+//
+a_clicks_by_day = a_clicks.groupby(['is_click', 'day']).user_id.count().reset_index()
+a_clicks_by_day_pivot = a_clicks_by_day.pivot(columns = 'is_click', index = 'day', values = 'user_id')
+print(a_clicks_by_day_pivot)                         RESULT:
+                                                        	          False	True
+                                                      1 - Monday	  70	  43
+                                                      2 - Tuesday	  76	  43
+                                                      3 - Wednesday	86	  38
+                                                      4 - Thursday	69	  47
+                                                      5 - Friday	  77	  51
+                                                      6 - Saturday	73	  45
+                                                      7 - Sunday	  66	  43
+a_clicks_by_day_pivot['percent_clicked'] = (a_clicks_by_day_pivot[True] / (a_clicks_by_day_pivot[True] + a_clicks_by_day_pivot[False]))*100
+print(a_clicks_by_day_pivot)                         RESULT:
+                                                        	          False	True  percent_clicked
+                                                      1 - Monday	  70.0	43.0	38.05309734513274
+                                                      2 - Tuesday	  76.0	43.0	36.134453781512605
+                                                      3 - Wednesday	86.0	38.0	30.64516129032258
+                                                      4 - Thursday	69.0	47.0	40.51724137931034
+                                                      5 - Friday	  77.0	51.0	39.84375
+                                                      6 - Saturday	73.0	45.0	38.13559322033898
+                                                      7 - Sunday	  66.0	43.0	39.44954128440367
+b_clicks_by_day = b_clicks.groupby(['is_click', 'day']).user_id.count().reset_index()
+b_clicks_by_day_pivot = b_clicks_by_day.pivot(columns = 'is_click', index = 'day', values = 'user_id')
+print(b_clicks_by_day_pivot)                         RESULT:
+                                                        	          False	True
+                                                      1 - Monday	  81	  32
+                                                      2 - Tuesday	  74	  45
+                                                      3 - Wednesday	89	  35
+                                                      4 - Thursday	87	  29
+                                                      5 - Friday	  90	  38
+                                                      6 - Saturday	76	  42
+                                                      7 - Sunday	  75	  34
+b_clicks_by_day_pivot['percent_clicked'] = (b_clicks_by_day_pivot[True] / (b_clicks_by_day_pivot[True] + b_clicks_by_day_pivot[False]))*100
+print(b_clicks_by_day_pivot)                         RESULT:
+                                                        	          False	True  percent_clicked
+                                                      1 - Monday	  81.0	32.0	28.31858407079646
+                                                      2 - Tuesday	  74.0	45.0	37.81512605042017
+                                                      3 - Wednesday	89.0	35.0	28.225806451612907
+                                                      4 - Thursday	87.0	29.0	25.0
+                                                      5 - Friday	  90.0	38.0	29.6875
+                                                      6 - Saturday	76.0	42.0	35.59322033898305
+                                                      7 - Sunday	  75.0	34.0	31.19266055045872
+  11. Compare the results for A and B. What happened over the course of the week? Do you recommend that your company use Ad A or Ad B?
+//
+The higher percentage of clicked ads shows that the Ad "A" performed better througout the course of the week. Suggest using the Ad A. 
+
+
+
+
+______________
 
 # Your manager wants to know which ad platform is getting you the most views. How many views (i.e., rows of the table) came from each utm_source?
 views = ad_clicks.groupby('utm_source').user_id.count().reset_index().rename(columns = {'user_id': 'views'})
