@@ -398,3 +398,108 @@ store_b_a_left = pd.merge(store_b, store_a, how = 'left')
   22. Paste the following code into script.py: print(store_a_b_left), print(store_b_a_left) to Clipboard. What do you notice about these two DataFrames? How are they different?
 How are they the same?
 
+                        CONCATENATE DATAFRAMES
+
+GIVEN:
+import codecademylib3
+import pandas as pd
+bakery = pd.read_csv('bakery.csv')
+print(bakery)                  RESULT:
+                                            item	              price
+                                         0	cookie            	2.5
+                                         1	brownie	            3.5
+                                         2	slice of cake	      4.75
+                                         3	slice of cheesecake	4.75
+                                         4	slice of pie	      5.0
+ice_cream = pd.read_csv('ice_cream.csv')
+print(ice_cream)               RESULT:
+                                            item	                            price
+                                         0	scoop of chocolate ice cream	    3.0
+                                         1	scoop of vanilla ice cream	      2.95
+                                         2	scoop of strawberry ice cream	    3.05
+                                         3	scoop of cookie dough ice cream	  3.25
+  23. An ice cream parlor and a bakery have decided to merge. The bakery’s menu is stored in the DataFrame bakery, and the ice cream parlor’s menu is stored in DataFrame ice_cream. 
+Create their new menu by concatenating the two DataFrames into a DataFrame called menu.
+  24. Display menu using print.
+//
+menu = pd.concat([bakery, ice_cream])
+print(menu)                    RESULT:
+                                            item	                          price
+                                         0	cookie	                        2.5
+                                         1	brownie	                        3.5
+                                         2	slice of cake	                  4.75
+                                         3	slice of cheesecake	            4.75
+                                         4	slice of pie	                  5.0
+                                         0	scoop of chocolate ice cream	  3.0
+                                         1	scoop of vanilla ice cream	    2.95
+                                         2	scoop of strawberry ice cream	  3.05
+                                         3	scoop of cookie dough ice cream	3.25
+
+                        REVIEW
+
+GIVEN:
+import codecademylib3
+import pandas as pd
+visits = pd.read_csv('visits.csv',
+                        parse_dates=[1])
+checkouts = pd.read_csv('checkouts.csv',
+                        parse_dates=[1])
+  1. Cool T-Shirts Inc. just created a website for ordering their products. They want you to analyze two datasets for them: visits contains information on all visits to their landing page, 
+checkouts contains all users who began to checkout on their website. Use print to inspect each DataFrame.
+//
+visits = pd.read_csv('visits.csv',
+                        parse_dates=[1])
+print(visits.head(10))              RESULT:
+                                            user_id	                              visit_time
+                                         0	319350b4-9951-47ef-b3a7-6b252099905f	2017-02-21 07:16:00
+                                         1	7435ec9f-576d-4ebd-8791-361b128fca77	2017-05-16 08:37:00
+                                         2	0b061e73-f709-42fa-8d1a-5f68176ff154	2017-04-12 19:32:00
+                                         3	9133d6f0-e68b-4c8d-bafd-ff2825e8dafe	2017-08-18 04:32:00
+                                         4	08d13edb-071c-4cfb-9ee4-8f377d0e932a	2017-07-08 06:24:00
+                                         5	c7192ab9-e033-4b69-971d-4bd92631342e	2017-10-05 09:16:00
+                                         ...
+checkouts = pd.read_csv('checkouts.csv',
+                        parse_dates=[1])
+print(checkouts.head(10))           RESULT:
+                                            user_id	                              checkout_time
+                                         0	fe90a9f4-960a-4a0d-9160-e562adb79365	2017-11-09 09:25:00
+                                         1	1a35b7eb-f603-407d-91be-a2c3304066fd	2017-08-15 21:25:00
+                                         2	e2c24ee0-7fdf-4400-abde-b36378fe5ce6	2017-07-04 15:39:00
+                                         3	10dbd3c5-d610-44e9-9994-110a7950b6b4	2017-08-09 21:07:00
+                                         4	f028e9dd-77d0-4002-83f6-372a4837fda6	2017-10-27 08:57:00
+                                         5	b7953447-00a8-42be-99d2-b511f4e9c12b	2017-04-24 10:20:00
+                                         ...
+  2. We want to know the amount of time from a user’s initial visit to the website to when they start to check out. Use merge to combine visits and checkouts and save it to the 
+variable v_to_c.
+//
+v_to_c = pd.merge(visits, checkouts)
+print(v_to_c.head(10))           RESULT:
+                                            user_id	                              visit_time	          checkout_time
+                                         0	319350b4-9951-47ef-b3a7-6b252099905f	2017-02-21 07:16:00	  2017-02-21 07:27:00
+                                         1	319350b4-9951-47ef-b3a7-6b252099905f	2017-02-21 07:16:00	  2017-02-21 07:40:00
+                                         2	7435ec9f-576d-4ebd-8791-361b128fca77	2017-05-16 08:37:00	  2017-05-16 08:49:00
+                                         3	7435ec9f-576d-4ebd-8791-361b128fca77	2017-05-16 08:37:00	  2017-05-16 08:55:00
+                                         4	08d13edb-071c-4cfb-9ee4-8f377d0e932a	2017-07-08 06:24:00	  2017-07-08 06:32:00
+                                         5	c4dac0f2-2fa9-48a8-b056-c3b2a5a5c683	2017-07-09 14:19:00	  2017-07-09 14:26:00
+                                         ...
+  3. In order to calculate the time between visiting and checking out, define a column of v_to_c called time that calculates the difference between checkout_time and visit_time for every row.
+//
+v_to_c['time'] = v_to_c.checkout_time - v_to_c.visit_time
+print(v_to_c.head(10))           RESULT:
+                                            user_id	                              visit_time	        checkout_time	      time
+                                         0	319350b4-9951-47ef-b3a7-6b252099905f	2017-02-21 07:16:00	2017-02-21 07:27:00	0 days 00:11:00
+                                         1	319350b4-9951-47ef-b3a7-6b252099905f	2017-02-21 07:16:00	2017-02-21 07:40:00	0 days 00:24:00
+                                         2	7435ec9f-576d-4ebd-8791-361b128fca77	2017-05-16 08:37:00	2017-05-16 08:49:00	0 days 00:12:00
+                                         3	7435ec9f-576d-4ebd-8791-361b128fca77	2017-05-16 08:37:00	2017-05-16 08:55:00	0 days 00:18:00
+                                         4	08d13edb-071c-4cfb-9ee4-8f377d0e932a	2017-07-08 06:24:00	2017-07-08 06:32:00	0 days 00:08:00
+                                         5	c4dac0f2-2fa9-48a8-b056-c3b2a5a5c683	2017-07-09 14:19:00	2017-07-09 14:26:00	0 days 00:07:00
+                                         ...
+  4. Use .mean() to calculate the average time to checkout and print that value to the terminal.
+//
+print(v_to_c['time'].mean())     RESULT:
+                                            0 days 00:15:24.750000
+
+
+
+
+
