@@ -258,6 +258,78 @@ print(orders_products)         RESULT:
                                          7	8	        4	          1	          1	        2017-02-02	4	          gizmo	              3
 
                         MISMATCHED MERGES
+GIVEN:
 
-  17. 
+  17. We’ve just released a new product with product_id equal to 5. People are ordering this product, but we haven’t updated the products table. In script.py, you’ll find two DataFrames: 
+products and orders. Inspect these DataFrames using print. Notice that the third order in orders is for the mysterious new product, but that there is no product_id 5 in products.
+//
+print(orders)                   RESULT:
+                                            id	product_id	customer_id	quantity	timestamp
+                                         0	1	  3	          2	          1	        2017-01-01
+                                         1	2  	2	          2	          3	        2017-01-01
+                                         2	3	  5	          1	          1	        2017-01-01
+                                         3	4	  2	          3	          2	        2016-02-01
+                                         4	5	  3	          3	          3	        2017-02-01
+print(products)                 RESULT:
+                                            product_id	description	        price
+                                         0	1	          thing-a-ma-jig    	5
+                                         1	2	          whatcha-ma-call-it	10
+                                         2	3	          doo-hickey        	7
+                                         3	4	          gizmo	              3
+  18. Merge orders and products and save it to the variable merged_df. Inspect merged_df using: print(merged_df). What happened to order_id 3?
+//
+merged_df = pd.merge(orders, products)
+print(merged_df)                RESULT:
+                                            id	product_id	customer_id	quantity	timestamp	  description	        price
+                                         0	1	  3	          2	          1	        2017-01-01	doo-hickey	        7
+                                         1	5	  3	          3	          3	        2017-02-01	doo-hickey	        7
+                                         2	2	  2	          2          	3	        2017-01-01	whatcha-ma-call-it	10
+                                         3	4	  2	          3	          2	        2016-02-01	whatcha-ma-call-it	10
+
+                        OUTER MERGE
+
+GIVEN:
+import codecademylib3
+import pandas as pd
+store_a = pd.read_csv('store_a.csv')
+print(store_a)                  RESULT:
+                                            item	        store_a_inventory
+                                         0	hammer	      12
+                                         1	screwdriver  	15
+                                         2	nails	        200
+                                         3	screws    	  350
+                                         4	saw	          6
+                                         5	duct tape	    150
+                                         6	wrench	      12
+                                         7	pvc pipe	    54
+store_b = pd.read_csv('store_b.csv')
+print(store_b)                  RESULT:
+                                            item	        store_b_inventory
+                                         0	hammer	      6
+                                         1	nails	        250
+                                         2	saw	          6
+                                         3	duct tape	    150
+                                         4	pvc pipe	    54
+                                         5	rake	        10
+                                         6	shovel      	15
+                                         7	wooden dowels	192
+  19. There are two hardware stores in town: Store A and Store B. Store A’s inventory is in DataFrame store_a and Store B’s inventory is in DataFrame store_b. 
+They have decided to merge into one big Super Store! Combine the inventories of Store A and Store B using an outer merge. Save the results to the variable store_a_b_outer.
+//
+store_a_b_outer = pd.merge(store_a, store_b, how='outer')
+print(store_a_b_outer)           RESULT:
+                                            item	        store_a_inventory	store_b_inventory
+                                         0	hammer	      12.0	            6.0
+                                         1	screwdriver  	15.0	            nan
+                                         2	nails	        200.0	            250.0
+                                         3	screws	      350.0	            nan
+                                         4	saw	          6.0	              6.0
+                                         5	duct tape	    150.0	            150.0
+                                         6	wrench	      12.0	            nan
+                                         7	pvc pipe	    54.0	            54.0
+                                         8	rake	        nan	              10.0
+                                         9	shovel	      nan	              15.0
+                                         10	wooden dowels	nan	              192.0
+
+
 
