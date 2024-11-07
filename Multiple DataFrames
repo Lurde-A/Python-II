@@ -96,5 +96,86 @@ print(targets)                   RESULT:
 - sales contains the monthly revenue for Cool T-Shirts Inc. It has two columns: month and revenue.
 - targets contains the goals for monthly revenue for each month. It has two columns: month and target.
 Create a new DataFrame sales_vs_targets which contains the merge of sales and targets.
+  7. Display sales_vs_targets using print.
 //
+sales_vs_targets = pd.merge(sales, targets)
+print(sales_vs_targets)         RESULT:
+                                            month	    revenue  	target
+                                         0	January	  300	      310
+                                         1	February	290	      270
+                                         2	March	    310	      300
+                                         3	April	    325	      350
+                                         4	May	      475	      475
+                                         5	June	    495	      500
+  8. Cool T-Shirts Inc. wants to know the months when they crushed their targets. Select the rows from sales_vs_targets where revenue is greater than target. Save these rows to the 
+variable crushing_it.
+//
+crushing_it = sales_vs_targets[sales_vs_targets.revenue > sales_vs_targets.target]
+print(crushing_it)         RESULT:
+                                            month	    revenue	  target
+                                         1	February	290	      270
+                                         2	March	    310	      300
 
+                        INNER MERGE III
+
+GIVEN:
+import codecademylib3
+import pandas as pd
+sales = pd.read_csv('sales.csv')
+print(sales)                     RESULT:
+                                            month	    revenue
+                                         0	January	  300
+                                         1	February	290
+                                         2	March	    310
+                                         3	April	    325
+                                         4	May	      475
+                                         5	June	    495
+targets = pd.read_csv('targets.csv')
+print(targets)                   RESULT:
+                                            month	    target
+                                         0	January	  310
+                                         1	February	270
+                                         2	March	    300
+                                         3	April	    350
+                                         4	May	      475
+                                         5	June	    500
+
+  9. We have some more data from Cool T-Shirts Inc. The number of men’s and women’s t-shirts sold per month is in a file called men_women_sales.csv. 
+Load this data into a DataFrame called men_women.
+//
+men_women = pd.read_csv('men_women_sales.csv')
+print(men_women)                 RESULT:
+                                            month	    men	women
+                                         0	January	  30	35
+                                         1	February	29	35
+                                         2	March	    31	29
+                                         3	April    	32	28
+                                         4	May	      47	50
+                                         5	June    	49	45
+  10. Merge all three DataFrames (sales, targets, and men_women) into one big DataFrame called all_data.
+//
+all_data = sales.merge(targets).merge(men_women)
+  11. Display all_data using print.
+//
+print(all_data)                 RESULT:
+                                            month	    revenue	target	men	women
+                                         0	January	  300	    310	    30	35
+                                         1	February	290	    270	    29	35
+                                         2	March	    310	    300	    31	29
+                                         3	April    	325	    350	    32	28
+                                         4	May	      475	    475    	47	50
+                                         5	June	    495    	500	    49	45
+  12. Cool T-Shirts Inc. thinks that they have more revenue in months where they sell more women’s t-shirts. Select the rows of all_data where:
+- revenue is greater than target
+AND
+- women is greater than men
+Save your answer to the variable results.
+//
+results = all_data[(all_data.revenue > all_data.target)&(all_data.women > all_data.men)]
+print(results)                 RESULT:
+                                            month	    revenue	target	men	women
+                                         1	February	290	    270    	29	35
+
+                        MERGE ON SPECIFIC COLUMNS
+
+  13. 
