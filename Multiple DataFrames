@@ -178,4 +178,86 @@ print(results)                 RESULT:
 
                         MERGE ON SPECIFIC COLUMNS
 
-  13. 
+  13. Merge orders and products using .rename(). Save your results to the variable orders_products.
+  14. Display orders_products using print.
+GIVEN:
+import codecademylib3
+import pandas as pd
+orders = pd.read_csv('orders.csv')
+print(orders)                 RESULT:
+                                            id	product_id	customer_id	quantity	timestamp
+                                         0	1	  3	          2	          1	        2017-01-01
+                                         1	2	  2	          2	          3	        2017-01-01
+                                         2	3	  1	          3	          1	        2017-01-01
+                                         3	4	  2	          3	          2	        2016-02-01
+                                         4	5	  3	          3	          3	        2017-02-01
+                                         5	6	  4	          1	          2	        2017-03-01
+                                         6	7	  1	          1	          1	        2017-02-02
+                                         7	8	  4	          1	          1	        2017-02-02
+products = pd.read_csv('products.csv')
+print(products)                 RESULT:
+                                            id	description	        price
+                                         0	1	  thing-a-ma-jig	    5
+                                         1	2	  whatcha-ma-call-it	10
+                                         2	3	  doo-hickey	        7
+                                         3	4	  gizmo	              3
+//
+orders_products = pd.merge(orders, products.rename(columns={'id':'product_id'}))
+print(orders_products)         RESULT:
+                                            id	product_id	customer_id	quantity	timestamp	  description	        price
+                                         0	1	  3	          2	          1	        2017-01-01	doo-hickey	        7
+                                         1	5	  3	          3	          3	        2017-02-01	doo-hickey	        7
+                                         2	2	  2	          2	          3	        2017-01-01	whatcha-ma-call-it	10
+                                         3	4	  2	          3	          2	        2016-02-01	whatcha-ma-call-it	10
+                                         4	3	  1	          3	          1	        2017-01-01	thing-a-ma-jig    	5
+                                         5	7	  1	          1	          1	        2017-02-02	thing-a-ma-jig    	5
+                                         6	6	  4	          1	          2	        2017-03-01	gizmo              	3
+                                         7	8	  4	          1	          1	        2017-02-02	gizmo              	3
+
+                        MERGE ON SPECIFIC COLUMNS II
+
+GIVEN:
+import codecademylib3
+import pandas as pd
+orders = pd.read_csv('orders.csv')
+print(orders)                   RESULT:
+                                            id	product_id	customer_id	quantity	timestamp
+                                         0	1	  3	          2	          1	        2017-01-01
+                                         1	2	  2	          2	          3	        2017-01-01
+                                         2	3	  1	          3	          1	        2017-01-01
+                                         3	4	  2	          3	          2	        2016-02-01
+                                         4	5	  3	          3	          3        	2017-02-01
+                                         5	6	  4	          1	          2	        2017-03-01
+                                         6	7	  1	          1	          1	        2017-02-02
+                                         7	8	  4	          1	          1	        2017-02-02
+products = pd.read_csv('products.csv')
+print(products)                 RESULT:
+                                            id	description	        price
+                                         0	1	  thing-a-ma-jig	    5
+                                         1	2	  whatcha-ma-call-it	10
+                                         2	3	  doo-hickey        	7
+                                         3	4	  gizmo	              3
+  15. Merge orders and products using left_on and right_on. Use the suffixes _orders and _products. Save your results to the variable orders_products.
+  16. Display orders_products using print.
+//
+orders_products = pd.merge(
+  orders, 
+  products, 
+  left_on = 'product_id', 
+  right_on = 'id', 
+  suffixes = ['_orders', '_products'])
+print(orders_products)         RESULT:
+                                            id_orders	product_id	customer_id	quantity	timestamp	  id_products	description	        price
+                                         0	1	        3	          2	          1	        2017-01-01	3	          doo-hickey	        7
+                                         1	5	        3	          3	          3	        2017-02-01	3	          doo-hickey	        7
+                                         2	2	        2	          2	          3	        2017-01-01	2	          whatcha-ma-call-it	10
+                                         3	4	        2	          3	          2	        2016-02-01	2	          whatcha-ma-call-it	10
+                                         4	3	        1	          3	          1	        2017-01-01	1	          thing-a-ma-jig	    5
+                                         5	7	        1	          1	          1	        2017-02-02	1	          thing-a-ma-jig	    5
+                                         6	6	        4	          1	          2	        2017-03-01	4	          gizmo	              3
+                                         7	8	        4	          1	          1	        2017-02-02	4	          gizmo	              3
+
+                        MISMATCHED MERGES
+
+  17. 
+
