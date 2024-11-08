@@ -1,1 +1,90 @@
                         INTRODUCTION: MULTIPLE DATAFRAMES
+
+GIVEN:
+import codecademylib3
+import pandas as pd
+visits = pd.read_csv('visits.csv',
+                     parse_dates=[1])
+cart = pd.read_csv('cart.csv',
+                   parse_dates=[1])
+checkout = pd.read_csv('checkout.csv',
+                       parse_dates=[1])
+purchase = pd.read_csv('purchase.csv',
+                       parse_dates=[1])
+
+  1. Inspect the DataFrames using print and head:
+- visits lists all of the users who have visited the website
+- cart lists all of the users who have added a t-shirt to their cart
+- checkout lists all of the users who have started the checkout
+- purchase lists all of the users who have purchased a t-shirt
+//
+visits = pd.read_csv('visits.csv',
+                     parse_dates=[1])
+print(visits.head(5))                       RESULT:
+                                                   user_id	                            	visit_time
+                                                  0	943647ef-3682-4750-a2e1-918ba6f16188	2017-04-07 15:14:00
+                                                  1	0c3a3dd0-fb64-4eac-bf84-ba069ce409f2	2017-01-26 14:24:00
+                                                  2	6e0b2d60-4027-4d9a-babd-0e7d40859fb1	2017-08-20 08:23:00
+                                                  3	6879527e-c5a6-4d14-b2da-50b85212b0ab	2017-11-04 18:15:00
+                                                  4	a84327ff-5daa-4ba1-b789-d5b4caf81e96	2017-02-27 11:25:00
+cart = pd.read_csv('cart.csv',
+                   parse_dates=[1])
+print(cart.head(5))                         RESULT:
+                                                     user_id	                            cart_time
+                                                  0	2be90e7c-9cca-44e0-bcc5-124b945ff168	2017-11-07 20:45:00
+                                                  1	4397f73f-1da3-4ab3-91af-762792e25973	2017-05-27 01:35:00
+                                                  2	a9db3d4b-0a0a-4398-a55a-ebb2c7adf663	2017-03-04 10:38:00
+                                                  3	b594862a-36c5-47d5-b818-6e9512b939b3	2017-09-27 08:22:00
+                                                  4	a68a16e2-94f0-4ce8-8ce3-784af0bbb974	2017-07-26 15:48:00
+checkout = pd.read_csv('checkout.csv',
+                       parse_dates=[1])
+print(checkout.head(5))                     RESULT:
+                                                   user_id	                              checkout_time
+                                                  0	d33bdc47-4afa-45bc-b4e4-dbe948e34c0d	2017-06-25 09:29:00
+                                                  1	4ac186f0-9954-4fea-8a27-c081e428e34e	2017-04-07 20:11:00
+                                                  2	3c9c78a7-124a-4b77-8d2e-e1926e011e7d	2017-07-13 11:38:00
+                                                  3	89fe330a-8966-4756-8f7c-3bdbcd47279a	2017-04-20 16:15:00
+                                                  4	3ccdaf69-2d30-40de-b083-51372881aedd	2017-01-08 20:52:00
+purchase = pd.read_csv('purchase.csv',
+                       parse_dates=[1])
+print(purchase.head(5))                     RESULT:
+                                                   user_id	                              checkout_time
+                                                  0	d33bdc47-4afa-45bc-b4e4-dbe948e34c0d	2017-06-25 09:29:00
+                                                  1	4ac186f0-9954-4fea-8a27-c081e428e34e	2017-04-07 20:11:00
+                                                  2	3c9c78a7-124a-4b77-8d2e-e1926e011e7d	2017-07-13 11:38:00
+                                                  3	89fe330a-8966-4756-8f7c-3bdbcd47279a	2017-04-20 16:15:00
+                                                  4	3ccdaf69-2d30-40de-b083-51372881aedd	2017-01-08 20:52:00
+  2. Combine visits and cart using a left merge.
+//
+visits_cart = pd.merge(visits, cart, how='left')
+print(visits_cart.head(10))                 RESULT:
+                                                   user_id	                              visit_time	          cart_time
+                                                  0	943647ef-3682-4750-a2e1-918ba6f16188	2017-04-07 15:14:00	  NaT
+                                                  1	0c3a3dd0-fb64-4eac-bf84-ba069ce409f2	2017-01-26 14:24:00	  2017-01-26 14:44:00
+                                                  2	6e0b2d60-4027-4d9a-babd-0e7d40859fb1	2017-08-20 08:23:00	  2017-08-20 08:31:00
+                                                  3	6879527e-c5a6-4d14-b2da-50b85212b0ab	2017-11-04 18:15:00	  NaT
+                                                  4	a84327ff-5daa-4ba1-b789-d5b4caf81e96	2017-02-27 11:25:00	  NaT
+                                                  ...
+  3. How long is your merged DataFrame?
+//
+print(len(visits_cart))                     RESULT: 2000
+  4. How many of the timestamps are null for the column cart_time? What do these null rows mean?
+//
+visits_cart_null = visits_cart[visits_cart.cart_time.isnull()]
+print(visits_cart_null.head(10))            RESULT:
+                                                   user_id	                              visit_time	          cart_time
+                                                  0	943647ef-3682-4750-a2e1-918ba6f16188	2017-04-07 15:14:00	  NaT
+                                                  3	6879527e-c5a6-4d14-b2da-50b85212b0ab	2017-11-04 18:15:00	  NaT
+                                                  4	a84327ff-5daa-4ba1-b789-d5b4caf81e96	2017-02-27 11:25:00	  NaT
+                                                  5	7bc62113-d51d-4e6b-85e0-1cf29e3de74a	2017-06-03 20:05:00	  NaT
+                                                  6	6f22cd44-bc63-4449-a9af-2651859da2f9	2017-03-18 23:09:00	  NaT
+                                                  ...
+print(len(visits_cart_null))                RESULT: 1652
+  5. What percent of users who visited Cool T-Shirts Inc. ended up not placing a t-shirt in their cart? Note: To calculate percentages, it will be helpful to turn either the numerator 
+or the denominator into a float, by using float(), with the number to convert passed in as input. Otherwise, Python will use integer division, which truncates decimal points.
+//
+perc_not_in_cart = float(len(visits_cart_null)) *100 / float(len(visits_cart)) 
+print(perc_not_in_cart)                         RESULT: 82.6
+
+
+
