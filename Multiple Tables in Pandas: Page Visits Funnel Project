@@ -85,6 +85,17 @@ or the denominator into a float, by using float(), with the number to convert pa
 //
 perc_not_in_cart = float(len(visits_cart_null)) *100 / float(len(visits_cart)) 
 print(perc_not_in_cart)                         RESULT: 82.6
+  6. Repeat the left merge for cart and checkout and count null values. What percentage of users put items in their cart, but did not proceed to checkout?
+//
+cart_checkout = pd.merge(cart, checkout, how = 'left')
+cart_checkout_null = cart_checkout[cart_checkout.checkout_time.isnull()]
+print(cart_checkout.head(10))
+print(len(cart_checkout))
+print(cart_checkout_null.head(10))
+print(len(cart_checkout_null))
+perc_not_checkout = float(len(cart_checkout_null)) *100 / float(len(cart_checkout)) 
+print(perc_not_checkout)
+
 
 
 
