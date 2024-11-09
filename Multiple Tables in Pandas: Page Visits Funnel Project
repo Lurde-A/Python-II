@@ -131,6 +131,14 @@ print(len(all_data[all_data.purchase_time.isnull()]))                           
                                                                                              later for the purchase step and finished it. 
   9. Which step of the funnel is weakest (i.e., has the highest percentage of users not completing it)? How might Cool T-Shirts Inc. change their website to fix this problem?
 //
+The weakest step is after the site visit and placement of item in a cart. The highest percentage - 82.6 of the people do not place anything in a cart. There are various options how this 
+percentage could be lowered, and more people would place items in a cart. Everything depends on the market and customers, their needs and preferences. 
+
+                        AVERAGE TIME TO PURCHASE
+
+  10. Using the giant merged DataFrame all_data that you created, let’s calculate the average time from initial visit to final purchase. Add a column that is the difference between 
+purchase_time and visit_time.
+//
 
 
 
