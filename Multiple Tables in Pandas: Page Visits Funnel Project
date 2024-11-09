@@ -138,9 +138,26 @@ percentage could be lowered, and more people would place items in a cart. Everyt
 
   10. Using the giant merged DataFrame all_data that you created, let’s calculate the average time from initial visit to final purchase. Add a column that is the difference between 
 purchase_time and visit_time.
+  11. Examine the results by printing the new column to the screen.
 //
-
-
-
-
-
+purchase_time_amount = all_data[all_data.purchase_time.notnull()]
+print(purchase_time_amount.head(5))                        RESULT:
+                                                                      user_id	                              visit_time	        cart_time	c         heckout_time	      purchase_time
+                                                                  1	  0c3a3dd0-fb64-4eac-bf84-ba069ce409f2	2017-01-26 14:24:00	2017-01-26 14:44:00	2017-01-26 14:54:00	2017-01-26 14:54:00
+                                                                  14	486480e2-98c3-4d51-8f4b-b1c07228ce84	2017-01-27 16:34:00	2017-01-27 16:44:00	2017-01-27 17:10:00	2017-01-27 17:10:00
+                                                                  31	1868e912-b38c-4ef0-8824-5665c42288e5	2017-03-17 11:48:00	2017-03-17 11:56:00	2017-03-17 11:58:00	2017-03-17 11:58:00
+                                                                  32	1868e912-b38c-4ef0-8824-5665c42288e5	2017-03-17 11:48:00	2017-03-17 11:56:00	2017-03-17 12:06:00	2017-03-17 11:58:00
+                                                                  49	3ccdaf69-2d30-40de-b083-51372881aedd	2017-01-08 20:21:00	2017-01-08 20:38:00	2017-01-08 20:52:00	2017-01-08 20:52:00
+                                                                  ...
+purchase_time_amount['average_time'] = purchase_time_amount.purchase_time - purchase_time_amount.visit_time
+print(purchase_time_amount.head(10))                       RESULT:
+                                                                      user_id	                              visit_time        	cart_time	          checkout_time      	purchase_time	      average_time
+                                                                  1	  0c3a3dd0-fb64-4eac-bf84-ba069ce409f2	2017-01-26 14:24:00	2017-01-26 14:44:00	2017-01-26 14:54:00	2017-01-26 14:54:00	0 days 00:30:00
+                                                                  14	486480e2-98c3-4d51-8f4b-b1c07228ce84	2017-01-27 16:34:00	2017-01-27 16:44:00	2017-01-27 17:10:00	2017-01-27 17:10:00	0 days 00:36:00
+                                                                  31	1868e912-b38c-4ef0-8824-5665c42288e5	2017-03-17 11:48:00	2017-03-17 11:56:00	2017-03-17 11:58:00	2017-03-17 11:58:00	0 days 00:10:00
+                                                                  32	1868e912-b38c-4ef0-8824-5665c42288e5	2017-03-17 11:48:00	2017-03-17 11:56:00	2017-03-17 12:06:00	2017-03-17 11:58:00	0 days 00:10:00
+                                                                  49	3ccdaf69-2d30-40de-b083-51372881aedd	2017-01-08 20:21:00	2017-01-08 20:38:00	2017-01-08 20:52:00	2017-01-08 20:52:00	0 days 00:31:00
+                                                                  ...
+  12. Calculate the average time to purchase by applying the .mean() function to your new column.
+//
+print(purchase_time_amount.average_time.mean())            RESULT: 0 days 00:28:48.500000
