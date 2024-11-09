@@ -89,12 +89,49 @@ print(perc_not_in_cart)                         RESULT: 82.6
 //
 cart_checkout = pd.merge(cart, checkout, how = 'left')
 cart_checkout_null = cart_checkout[cart_checkout.checkout_time.isnull()]
-print(cart_checkout.head(10))
-print(len(cart_checkout))
-print(cart_checkout_null.head(10))
-print(len(cart_checkout_null))
+print(cart_checkout.head(10))                 RESULT:
+                                                      user_id	                              cart_time	            checkout_time
+                                                  0	  2be90e7c-9cca-44e0-bcc5-124b945ff168	2017-11-07 20:45:00	  2017-11-07 21:14:00
+                                                  1	  2be90e7c-9cca-44e0-bcc5-124b945ff168	2017-11-07 20:45:00	  2017-11-07 20:50:00
+                                                  2	  2be90e7c-9cca-44e0-bcc5-124b945ff168	2017-11-07 20:45:00	  2017-11-07 21:11:00
+                                                  3	  4397f73f-1da3-4ab3-91af-762792e25973	2017-05-27 01:35:00	  NaT
+                                                  4	  a9db3d4b-0a0a-4398-a55a-ebb2c7adf663	2017-03-04 10:38:00	  2017-03-04 11:04:00
+                                                  ...
+print(len(cart_checkout))                     RESULT:  482
+print(cart_checkout_null.head(10))            RESULT:
+                                                      user_id	                              cart_time	            checkout_time
+                                                  3	  4397f73f-1da3-4ab3-91af-762792e25973	2017-05-27 01:35:00	  NaT
+                                                  6	  a68a16e2-94f0-4ce8-8ce3-784af0bbb974	2017-07-26 15:48:00	  NaT
+                                                  14	fd80ce93-ae6e-4c0b-9ea4-561f84152026	2017-06-07 01:18:00	  NaT
+                                                  26	48a23075-694b-417d-8449-9df921ad95aa	2017-07-09 15:28:00	  NaT
+                                                  29	5d7d121a-817c-4b84-b4d6-5388092b9aec	2017-06-10 14:54:00	  NaT
+                                                  ...
+print(len(cart_checkout_null))                RESULT:  122
 perc_not_checkout = float(len(cart_checkout_null)) *100 / float(len(cart_checkout)) 
-print(perc_not_checkout)
+print(perc_not_checkout)                           RESULT:  25.311203319502074
+  7. Merge all four steps of the funnel, in order, using a series of left merges. Save the results to the variable all_data. Examine the result using print and head.
+//
+visits_cart_checkout = pd.merge(visits_cart, cart_checkout, how = 'left')
+all_data = pd.merge(visits_cart_checkout, purchase, how = 'left')
+print(all_data.head(10))                      RESULT:
+                                                    user_id	                              visit_time	          cart_time	            checkout_time
+                                                  0	943647ef-3682-4750-a2e1-918ba6f16188	2017-04-07 15:14:00	  NaT	                  NaT
+                                                  1	0c3a3dd0-fb64-4eac-bf84-ba069ce409f2	2017-01-26 14:24:00	  2017-01-26 14:44:00	  2017-01-26 14:54:00
+                                                  2	6e0b2d60-4027-4d9a-babd-0e7d40859fb1	2017-08-20 08:23:00	  2017-08-20 08:31:00	  NaT
+                                                  3	6879527e-c5a6-4d14-b2da-50b85212b0ab	2017-11-04 18:15:00	  NaT	                  NaT
+                                                  4	a84327ff-5daa-4ba1-b789-d5b4caf81e96	2017-02-27 11:25:00	  NaT	                  NaT
+                                                  5	7bc62113-d51d-4e6b-85e0-1cf29e3de74a	2017-06-03 20:05:00	  NaT	                  NaT
+                                                  ...
+  8. What percentage of users proceeded to checkout, but did not purchase a t-shirt?
+//
+print(len(visits_cart_checkout[visits_cart_checkout.checkout_time.isnull()]))                RESULT: 1774
+print(len(all_data[all_data.purchase_time.isnull()]))                                        RESULT: 1774
+                                                                                             As the same number of all users did not proceed to chechout and did not purchase an item 
+                                                                                             it represents the fact that none of the users who did proceed to checkout had dropped off
+                                                                                             later for the purchase step and finished it. 
+  9. Which step of the funnel is weakest (i.e., has the highest percentage of users not completing it)? How might Cool T-Shirts Inc. change their website to fix this problem?
+//
+
 
 
 
